@@ -1,0 +1,138 @@
+var Note = React.createClass({
+    getInitialState: function(){
+      return {editing: false}
+    },
+    componentWillMount: function() {
+      this.style = {
+        right: this.randomBetween(0, window.innerWidth - 150) + 'px',
+        top: this.randomBetween(200, window.innerHeight -150) + 'px',
+        transform: 'rotate(' + this.randomBetween(-15, 15) + 'deg)'
+      };
+    },
+    componentDidMount: function(){
+      $(this.getDOMNode()).draggable();
+    },
+    randomBetween: function(min, max) {
+      return (min + Math.ceil(Math.random() * max));
+    },
+    edit: function() {
+      this.setState({editing: true});
+    },
+    save: function() {
+      this.props.onChange(this.refs.newText.getDOMNode().value, this.props.index)
+      this.setState({editing: false});
+    },
+    remove: function() {
+      this.props.onRemove(this.props.index);
+    },
+    renderDisplay: function(){
+      return (
+        <div className="note"
+        style={this.style}>
+        <p>{this.props.children}</p>
+<span>
+<button onClick={this.edit}
+className="btn btn-primary glyphicon glyphicon-pencil"/>
+<button onClick={this.remove}
+className="btn btn-danger glyphicon glyphicon-trash"/>
+</span>
+        </div>
+      );
+    },
+    renderForm: function(){
+      return(
+        <div className="note" style={this.style}>
+        <textarea ref="newText" defaultValue={this.props.children}
+        className="form-control"></textarea>
+        <button onClick={this.save} className="btn btn-success bt-sm glyphicon glyphicon-floppy-disk"/>
+        </div>
+      )
+    },
+    render: function() {
+        if (this.state.editing) {
+          return this.renderForm();
+        }
+        else {
+          return this.renderDisplay();
+        }
+      }
+});
+var Header = React.createClass ({
+    render: function() {
+      return (
+        <div className="container-fluid text-center">
+        <nav className="row">
+            <h1 className="postit">Post-it<p className="small">&#174;</p></h1>
+        </nav>
+        </div>
+      );
+    }
+})
+React.render(<Header/>,
+    document.getElementById('header'));
+var Board = React.createClass ({
+    propTypes: {
+      count: function(props, propName) {
+        if (typeof props[propName] !== "number"){
+          return new Error('The count property must be a number');
+        }
+        if (props[propName] > 100) {
+          return new Error("Creating " + props[propName] + " notes is crazy")
+        }
+      }
+    },
+    getInitialState: function() {
+      return{
+        notes: []
+      };
+    },
+    nextId: function() {
+      this.uniqueId = this.uniqueId || 0;
+      return this.uniqueId++;
+    },
+    add: function(text) {
+      var arr = this.state.notes;
+      arr.push({
+        id: this.nextId(),
+        note: text
+      });
+      this.setState({notes: arr});
+    },
+    update: function(newText, i) {
+      var arr = this.state.notes;
+      arr[i].note = newText;
+      this.setState({notes:arr});
+    },
+    remove: function(i) {
+      var arr = this.state.notes;
+      arr.splice(i, 1);
+      this.setState({notes: arr});
+    },
+    clearArray: function() {
+      var arr = this.state.notes;
+      arr.length = 0;
+      this.setState({notes: arr});
+    },
+    eachNote: function(note, i){
+      return (
+        <Note key={note.id}
+            index={i}
+            onChange={this.update}
+            onRemove={this.remove}
+        >{note.note}</Note>
+      );
+    },
+    render: function(){
+    return (
+      <div className="board">
+    {this.state.notes.map(this.eachNote)}
+    <button className="btn btn-sm yellow glyphicon glyphicon-plus"
+      onClick={this.add.bind(null, "Hire Me!")}/>
+    <button className="btn btn-sm btn-danger glyphicon-bomb fa fa-bomb"
+      onClick={this.clearArray}/>
+      </div>
+  );
+  }
+})
+React.render(<Board count={50}/>,
+    document.getElementById('react-container'));
