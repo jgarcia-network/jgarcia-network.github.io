@@ -1,0 +1,84 @@
+body, html, div.board, div#react-container {
+    height: 100%;
+    overflow: hidden;
+}
+body {
+    margin: 0;
+    padding: 0;
+    color: transparent;
+}
+div.board {
+    background-image: url('../img/cork.png');
+}
+div.note {
+    height: 150px;
+    width: 150px;
+    background-color: yellow;
+    color: #000;
+    margin: 2px 0;
+    position: absolute;
+    cursor: -webkit-grab;
+    -webkit-box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, .2);
+    box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, .2);
+}
+div.note:active {
+    cursor: -webkit-grabbing;
+}
+div.note p {
+    font-size: 22px;
+    padding: 5px;
+    font-family: "Shadows Into Light";
+    text-align: center;
+    padding-top: 55px;
+}
+div.note:hover> span {
+    opacity: 1;
+}
+div.note> span {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    opacity: 0;
+    transition: opacity .25s linear;
+}
+div.note button {
+    margin: 2px;
+}
+div.note> textarea {
+    height: 75%;
+    background: rgba(255, 255, 255, .5);
+}
+div#header {
+    background-color: #FFFF00;
+    border-color: #FFFF00;
+}
+.postit {
+    color: #000;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 900;
+    font-size: 100px;
+}
+p.small {
+    font-size: 20px;
+    font-weight: 700;
+    color: #000;
+    display: inline;
+}
+.yellow {
+    background-color: #FFFF00;
+    color: #000;
+}
+.glyphicon-plus {
+    position: fixed;
+    top: 200px;
+    right: 10px;
+    width: 40px;
+    height: 30px;
+}
+.glyphicon-bomb {
+    position: fixed;
+    top: 250px;
+    right: 10px;
+    width: 40px;
+    height: 30px;
+}
