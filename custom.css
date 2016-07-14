@@ -1,0 +1,40 @@
+body {
+    background-color: #C4C8CB;
+    font-family: 'Poppins', sans-serif;
+}
+.nav-pills> li.active> a, .nav-pills> li.active> a:focus, .nav-pills> li.active> a:hover {
+    background-color: #000;
+}
+.nav> li> a:focus, .nav> li> a:hover {
+    color: #000;
+}
+a {
+    color: #000;
+}
+a:focus, a:hover {
+    color: #FFF;
+}
+.label-default {
+    background-color: #000;
+}
+.padding {
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.noright {
+  padding-right: 0;
+}
+
+/* Make equal height with table styles */
+
+@media (min-width: 768px) {
+    .table-row {
+        display: table;
+        table-layout: fixed;
+    }
+    .table-row [class^="col-"] {
+        display: table-cell;
+        float: none;
+    }
+}
