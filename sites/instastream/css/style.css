@@ -27,8 +27,11 @@ h1 {
     display: block;
     line-height: 20px;
 }
+h3 {
+  white-space: nowrap;
+}
 .no-right {
-    padding-right: 0px;
+    padding-left: 15px;
 }
 .frame-title {
     display: none!important;
@@ -37,7 +40,7 @@ h1 {
   display: none!important;
 }
 .frame a img {
-  max-width:50%;
+  max-width:45%;
   border: 10px solid #FED837;
 }
 .frame{
@@ -60,11 +63,33 @@ h1 {
 /* On small screens, set height to 'auto' for sidenav and grid */
 
 @media screen and (max-width: 767px) {
-    .sidenav {
-        height: auto;
-        padding: 15px;
-    }
     .row.content {
         height: auto;
     }
+}
+@media screen and (max-width: 360px) {
+    h1 {
+      font-size: 50px;
+    }
+    h3 {
+      font-size: 13px;
+    }
+    .footer {
+        font-size: 40px;
+    }
+    .no-left {
+      padding-right: 120px;
+    }
+    .no-right {
+        padding-left: 0px;
+    }
+}
+@media screen and (height: 480px) {
+  .no-left {
+    padding-right: 80px;
+  }
+  .no-right {
+      padding-left: 0px;
+  }
+
 }
