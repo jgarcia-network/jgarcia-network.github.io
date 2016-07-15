@@ -1,0 +1,70 @@
+@font-face {
+    font-family: 'cooper_blackregular';
+    src: url('coopbl-webfont.woff2') format('woff2'), url('coopbl-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Set gray background color and 100% height */
+
+.sidenav {
+    padding-top: 20px;
+    background-color: #f1f1f1;
+    height: 100%;
+}
+body {
+    background-color: #297B3D;
+    font-family: 'cooper_blackregular'!important;
+    position: relative;
+}
+.header {
+    background-color: #297B3D;
+    border: 0px;
+    color: #FFF;
+}
+h1 {
+    font-size: 100px;
+    display: block;
+    line-height: 20px;
+}
+.no-right {
+    padding-right: 0px;
+}
+.frame-title {
+    display: none!important;
+}
+.frame-more {
+  display: none!important;
+}
+.frame a img {
+  max-width:50%;
+  border: 10px solid #FED837;
+}
+.frame{
+	text-align: center;
+	overflow: hidden;
+}
+
+/* Add classes if you want more than 4 results */
+
+.footer {
+    background-color: #FED837;
+    font-size: 50px;
+    color: #FFF;
+    padding-top: 15px!important;
+    padding-bottom: 15px!important;
+    padding-left: 0px!important;
+    padding-right: 0px!important;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+
+@media screen and (max-width: 767px) {
+    .sidenav {
+        height: auto;
+        padding: 15px;
+    }
+    .row.content {
+        height: auto;
+    }
+}
